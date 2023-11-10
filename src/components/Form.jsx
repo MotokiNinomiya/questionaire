@@ -3,6 +3,8 @@ import './Form.css'; //Form.cssを読み込む
 import { Button } from "./button";
 import { Link,useNavigate } from "react-router-dom"; //変更点 11/10　useNavigateによって画面遷移を実装　htmlのaタグみたいな
 import prefecturesList from "./prefectures";
+import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
+
 
 export const Form = (props) => {
     // const data = JSON.parse(props.data); //これが問題
@@ -24,6 +26,7 @@ export const Form = (props) => {
 
     return (
         <div>
+            <img src={pic} alt="picture" />
             <div className="labeltitle">
                 <b>{props.title}</b>
             </div>

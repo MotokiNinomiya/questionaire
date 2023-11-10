@@ -2,6 +2,7 @@ import React from 'react'
 import './Form.css'; //Form.cssを読み込む
 import { Button } from "./button";
 import { Link , useNavigate} from "react-router-dom";
+import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 
 function Form3(props) {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Form3(props) {
     }
     return (    
         <div>
+            <img src={pic} alt="picture" />
             <div className="labeltitle">
                 <b>{props.title}</b>
             </div>

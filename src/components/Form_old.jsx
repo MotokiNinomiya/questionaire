@@ -1,24 +1,11 @@
 import React from "react";
 import './Form.css'; //Form.cssを読み込む
-import { Button } from "./button";
-import { Link,useNavigate } from "react-router-dom"; //変更点 11/10　useNavigateによって画面遷移を実装　htmlのaタグみたいな
-import prefecturesList from "./prefectures";
 
 export const Form = (props) => {
-    // const data = JSON.parse(props.data); //これが問題
-    
-    // const mPrefectures = Object.keys(data.prefectures).map(function (key) {
-    //     return data.prefectures[key];
-    // });
-
-    //変更点　11/10
-    const navigate = useNavigate();
-    const handleClick = (event) => {
-        //navigate関数を使って画面遷移
-        navigate('/form2');
-    }
-    
-     
+    const data = JSON.parse(props.data);
+    const mPrefectures = Object.keys(data.prefectures).map(function (key) {
+        return data.prefectures[key];
+    });
 
     const handleChange = (e) => { };
 
@@ -33,7 +20,8 @@ export const Form = (props) => {
                 <p>作業者にフィードバックするために、以下の項目から１つ以上のご回答をお願いいたします</p>
             </div>
             <div className="container">
-                <div className="spacer">
+                <div className="spacer" />
+                <div>
                     <h4>ご契約ID(CAFまたはCOPから始まる番号)</h4>
                     <select>
                         <option value="caf">CAF</option>
@@ -41,11 +29,13 @@ export const Form = (props) => {
                     </select>
                     <input type="text" />
                 </div>
-                <div className="spacer">
+                <div className="spacer" />
+                <div>
                     <h4>携帯電話番号</h4>
                     <input type="text" />
                 </div>
-                <div className="spacer">
+                <div className="spacer" />
+                <div>
                     <h4>固定電話番号</h4>
                     <input type="text" />
                 </div>
@@ -53,20 +43,23 @@ export const Form = (props) => {
                     <h3>ご住所</h3>
                 </div>
                 <div className="container2">
-                    <div className="spacer">
+                    <div className="spacer" />
+                    <div>
                         <label>都道府県：</label>
                         <select onChange={(e) => handleChange(e)}>
-                            {prefecturesList.prefectures.map((item) => (
+                            {mPrefectures.map((item) => (
                                 <option value={item.id}>{item.name}</option>
                             ))}
                         </select>
                     </div>
 
-                    <div className="spacer">
+                    <div className="spacer" />
+                    <div>
                         <label>市区町村：</label>
                         <input type="text" />
                     </div>
-                    <div className="spacer">
+                    <div className="spacer" />
+                    <div>
                         <label>建物、番地：</label>
                         <input type="text" />
                     </div>
@@ -77,12 +70,9 @@ export const Form = (props) => {
                 <p>第三者に個人情報を提供することもございません。</p>
                 <p>なお、そのほか個人情報に関してはNTT東日本プライバシーポリシーに則って適切に取り扱います</p>
                 <p>NTT東日本プライバシーポリシーは<a href="https://www.ntt-east.co.jp/info/disclaimer/privacy.html">こちら</a>をご確認ください</p>
-                <Button onClick={handleClick}> 
-                    次へ
-                </Button>
+                <button>次へ</button>
             </div>
         </div>
     );
 };
-
 export default Form;

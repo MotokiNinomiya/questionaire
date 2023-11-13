@@ -15,15 +15,22 @@ function Form2(props) {
     }
     return (    
         <div>
+            {/*ヘッダーの実装*/}
             <img src={pic} alt="picture" />
             <div className="labeltitle">
                 <b>{props.title}</b>
             </div>
+            {/*冒頭文の実装*/}
             <div>
                 <p>NTT東日本のフレッツ回線をご利用していただきありがとうございます。</p>
                 <p>NTT東日本では作業者の応対品質向上に向け、お客様満足度調査を実施しております</p>
                 <p>作業者にフィードバックするために、以下の項目から１つ以上のご回答をお願いいたします</p>
-            </div>  
+            </div>
+            {/*ラジオボタンの実装*/}
+            <div className="radio">
+                <input type="radio" name="radio" value="radio1" /> 
+                <label>作業者の対応が丁寧であった</label>
+            </div>
             <Button onClick={handleClick}> 
                     送信
             </Button>

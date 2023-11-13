@@ -26,13 +26,15 @@ export const Form = (props) => {
 
     return (
         <div>
-            {/*ヘッダーの実装*/}
-            <img src={pic} alt="picture" />
+            <div className="logo">
+                {/*ヘッダーの実装*/}
+                <img src={pic} alt="picture" />
+            </div>
             <div className="labeltitle">
                 <b>{props.title}</b>
             </div>
             {/*冒頭文*/}
-            <div>
+            <div className="phrase">
                 <p>NTT東日本のフレッツ回線をご利用していただきありがとうございます。</p>
                 <p>NTT東日本では作業者の応対品質向上に向け、お客様満足度調査を実施しております</p>
                 <p>作業者にフィードバックするために、以下の項目から１つ以上のご回答をお願いいたします</p>
@@ -82,16 +84,16 @@ export const Form = (props) => {
                 </div>
             </div>
             {/*最後の文章実装*/}
-            <div>
+            <div className="phrase">
                 <p>記載していただいた個人情報は、作業者へフィードバック以外には使用しません</p>
                 <p>第三者に個人情報を提供することもございません。</p>
                 <p>なお、そのほか個人情報に関してはNTT東日本プライバシーポリシーに則って適切に取り扱います</p>
                 <p>NTT東日本プライバシーポリシーは<a href="https://www.ntt-east.co.jp/info/disclaimer/privacy.html">こちら</a>をご確認ください</p>
-                {/*次ページに遷移するボタンの実装*/}
-                <Button onClick={handleClick}> 
-                    次へ
-                </Button>
-            </div>
+            </div>    
+            {/*次ページに遷移するボタンの実装*/}
+            <Button onClick={handleClick} > 
+                次へ
+            </Button>   
         </div>
     );
 };

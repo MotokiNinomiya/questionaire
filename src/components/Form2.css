@@ -1,0 +1,16 @@
+.radio{
+    display: flex;
+    margin-top: 10px
+}
+.scale{
+    display: flex;
+    margin-left: 10px
+}
+.scale p {
+    margin-right: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.slider{
+    margin-right: 200px;
+}

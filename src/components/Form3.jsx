@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './Form.css'; //Form.cssを読み込む
+import './Form2.css'; //Form2.cssを読み込む
 import { Button } from "./button";
-import { Link , useNavigate} from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
+import { Slider }from '@mui/material';
 
 function Form3(props) {
     const navigate = useNavigate();
@@ -12,15 +14,22 @@ function Form3(props) {
     }
     return (    
         <div>
-            <img src={pic} alt="picture" />
-            <div className="labeltitle">
-                <b>{props.title}</b>
+            <div className="logo">
+                    {/*ヘッダーの実装*/}
+                    <img src={pic} alt="picture" />
             </div>
-            <div>
+
+            <div className="labeltitle">
+                    <b>{props.title}</b>
+            </div>
+
+            {/*冒頭文の実装*/}
+            <div className="phrase">
                 <p>NTT東日本のフレッツ回線をご利用していただきありがとうございます。</p>
-            </div>  
-            <Button onClick={handleClick}>
-                アンケートページに戻る
+                <p>NTT東日本では作業者の応対品質向上に向け、お客様満足度調査を実施しております</p>
+            </div>
+            <Button onClick={handleClick}> 
+                アンケート画面に戻る
             </Button>
         </div>
     )

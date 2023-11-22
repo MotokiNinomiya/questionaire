@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { useReducer } from 'react';
 import './Form.css'; //Form.cssを読み込む
 import './Form2.css'; //Form2.cssを読み込む
@@ -7,37 +8,52 @@ import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { Slider }from '@mui/material';
 //import { postData, updateData, deleteData } from './httpMethods';
-
 //入力欄の初期値に相当
-const RADIO_VALUES = ["大満足", "満足", "不満", "大不満"];
-
-const [selectedRadioBtnValue, setSelectedRadioBtnValue] = useState("");
-
-//各入力欄の状態変更(=値の入力）を行うリデューサー関数
-const editReducer = (state, action) => {
+const initlalState = {
+    good_or_bad: '',
+    ok_or_not: '',
+    enough_or_notenough: '',
+    mannerpoints: '',
+    mannerreason: '',
+    easy_or_difficult: '',
+    explainpoints: '',
+    explainreason: '',
+    suitable_or_long_or_short: '',
+    timepoints: '',
+    timereason: '',
+  };
+  //各入力欄の状態変更(=値の入力）を行うリデューサー関数
+  const editReducer = (state, action) => {
     switch (action.type) {
-      case 'edit_caf-or-cop':
-        return { ...state, caf_cop: action.payload };
-      case 'edit_id':
-        return { ...state, id: action.payload };
-      case 'edit_phonenumber':
-        return { ...state, phonenumber: action.payload };
-      case 'edit_homephonenumber':
-        return { ...state, homephonenumber: action.payload };
-      case 'edit_prefecture':
-        return { ...state, prefecture: action.payload };
-      case 'edit_city':
-        return { ...state, city: action.payload };
-      case 'edit_address':
-        return { ...state, address: action.payload };
+      case 'edit_good_or_bad':
+        return { ...state, good_or_bad: action.payload };
+      case 'edit_ok_or_notok':
+        return { ...state, ok_or_notok: action.payload };
+      case 'edit_enought_or_notenough':
+        return { ...state, enought_or_notenough: action.payload };
+      case 'edit_mannerpoints':
+        return { ...state, mannerpoints: action.payload };
+      case 'edit_mannerreason':
+        return { ...state, mannerreason: action.payload };
       default:
         return state;
     }
-};
+  };
+
 
 export const Form2 = (props) => {
+    //ラジオボタンの初期値設定
+    const RADIO_VALUES = ["大満足", "満足", "不満", "大不満"];
+    // const RADIO_VALUES2 = ["よかった", "よくなかった"];
+    // const RADIO_VALUES3 = ["よかった", "よくなかった"];
+    // const RADIO_VALUES4 = ["分かりやすかった", "分かりにくかった"];
+    // const RADIO_VALUES5 = ["適切だった", "長かった", "短かった"];
+
+
+    const [state, dispatch] = useReducer(editReducer, initlalState);
+
     const navigate = useNavigate();
-    const handleClick = (event) => {
+    const handleClick = ({target}) => {
         //navigate関数を使って画面遷移
         navigate('/form3');
     };
@@ -47,6 +63,7 @@ export const Form2 = (props) => {
     // スライダーの値が変更されたときのハンドラー
     const handleSliderChange = (event,newValue) => {
         setSliderValue(newValue);
+        dispatch({ type: 'edit_mannerpoints', payload: newValue });
     };
     //eventがないとエラーが出る
     //Objects are not valid as a React child (found: [object MouseEvent]). If you meant to render a collection of children, use an array instead.
@@ -55,6 +72,7 @@ export const Form2 = (props) => {
     // スライダーの値が変更されたときのハンドラー
     const handleSliderChange2 = (event,newValue) => {
         setSliderValue2(newValue);
+        dispatch({ type: 'edit_explainpoints', payload: newValue });
     };
 
     // スライダーの値を状態として管理します
@@ -62,10 +80,8 @@ export const Form2 = (props) => {
     // スライダーの値が変更されたときのハンドラー
     const handleSliderChange3 = (event,newValue) => {
         setSliderValue3(newValue);
+        dispatch({ type: 'edit_timepoints', payload: newValue });
     };
-
-    //ラジオボタンの値を状態として管理します
-    const onRadioBtnChanged = () => setSelectedRadioBtnValue(e.target.value);
 
     return (
         <div>        
@@ -93,28 +109,28 @@ export const Form2 = (props) => {
                     <p>1-1 工事担当者のお客様対応について</p>
                 </div>
                 <div className="radio">
-                <label>
-                    <input type="radio" name="radio" value="verygood" /> 
-                    大満足
-                </label>
-                </div>
-                <div className="radio">
-                <label>
-                    <input type="radio" name="radio" value="good" /> 
-                    満足
-                </label>
-                </div>
-                <div className="radio">
-                <label>
-                    <input type="radio" name="radio" value="bad" /> 
-                    不満
-                </label>
-                </div>
-                <div className="radio">
-                <label>
-                    <input type="radio" name="radio" value="verybad" /> 
-                    大不満
-                </label>
+                    <label>
+                        <input type="radio" name="radio" value="verygood" /> 
+                        大満足
+                    </label>
+                    </div>
+                    <div className="radio">
+                    <label>
+                        <input type="radio" name="radio" value="good" /> 
+                        満足
+                    </label>
+                    </div>
+                    <div className="radio">
+                    <label>
+                        <input type="radio" name="radio" value="bad" /> 
+                        不満
+                    </label>
+                    </div>
+                    <div className="radio">
+                    <label>
+                        <input type="radio" name="radio" value="verybad" /> 
+                        大不満
+                    </label>
                 </div>
             </div>
 

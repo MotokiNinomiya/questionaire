@@ -1,14 +1,41 @@
 import React, { useState } from 'react';
+import { useReducer } from 'react';
 import './Form.css'; //Form.cssを読み込む
 import './Form2.css'; //Form2.cssを読み込む
 import { Button } from "./button";
 import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { Slider }from '@mui/material';
+//import { postData, updateData, deleteData } from './httpMethods';
 
+//入力欄の初期値に相当
+const RADIO_VALUES = ["大満足", "満足", "不満", "大不満"];
 
+const [selectedRadioBtnValue, setSelectedRadioBtnValue] = useState("");
 
-function Form2(props) {
+//各入力欄の状態変更(=値の入力）を行うリデューサー関数
+const editReducer = (state, action) => {
+    switch (action.type) {
+      case 'edit_caf-or-cop':
+        return { ...state, caf_cop: action.payload };
+      case 'edit_id':
+        return { ...state, id: action.payload };
+      case 'edit_phonenumber':
+        return { ...state, phonenumber: action.payload };
+      case 'edit_homephonenumber':
+        return { ...state, homephonenumber: action.payload };
+      case 'edit_prefecture':
+        return { ...state, prefecture: action.payload };
+      case 'edit_city':
+        return { ...state, city: action.payload };
+      case 'edit_address':
+        return { ...state, address: action.payload };
+      default:
+        return state;
+    }
+};
+
+export const Form2 = (props) => {
     const navigate = useNavigate();
     const handleClick = (event) => {
         //navigate関数を使って画面遷移
@@ -36,6 +63,9 @@ function Form2(props) {
     const handleSliderChange3 = (event,newValue) => {
         setSliderValue3(newValue);
     };
+
+    //ラジオボタンの値を状態として管理します
+    const onRadioBtnChanged = () => setSelectedRadioBtnValue(e.target.value);
 
     return (
         <div>        
@@ -258,5 +288,7 @@ function Form2(props) {
     );
 };
 
-export default Form2
+export default Form2;
+
+
 

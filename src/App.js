@@ -4,17 +4,38 @@ import Form from "./components/Form";　//Formコンポーネント(Form.jsx)を
 import Form2 from "./components/Form2";　//Formコンポーネント(Form.jsx)をインポート
 import Form3 from "./components/Form3";　//Formコンポーネント(Form.jsx)をインポート
 import prefecturesList from "./components/prefectures"; //prefecturesコンポーネント(prefectures.jsx)をインポート 
-
+import { useReducer } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // usecontextをインポート
 // usecontextの各項目を書く 電話番号など
 // providerを書くことで、valueを渡すことができる
+// export const AppContext = createContext();
+
+// const initialState = {
+//   caf_or_cop: "",
+//   id: "",
+//   phone_number: "",
+//   home_phone_number: "",
+//   prefectures: "",
+//   city: "",
+//   address: "",
+//   isgood: "",
+//   mannerisgood: "",
+//   fashionisgood: "",
+//   mannerscore: "",
+//   mannerscorereason: "",
+//   explainisgood: "",
+//   explainscore: "",
+//   explainscorereason: "",
+//   timeisgood: "",
+//   timescore: "",
+//   timescorereason: "",
+// };
+
+
 
 function App() {
-  const datas = JSON.stringify(prefecturesList);
-  return (
-
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Form title={"NTT東日本　お客様満足度調査"}/>} />  {/*urlを設定 "localhost:3000/"にアクセスしたらFormコンポーネントを表示*/}
@@ -22,7 +43,6 @@ function App() {
         <Route path="/form3" element={<Form3 title={"NTT東日本　お客様満足度調査"}/>} /> {/*//同様　element以下が出したコンポーネント*/}
       </Routes>
     </BrowserRouter>
-  );
 }
 export default App;
 

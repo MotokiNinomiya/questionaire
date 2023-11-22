@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import './Form.css'; //Form.cssを読み込む
 import './Form2.css'; //Form2.cssを読み込む
 import { Button } from "./button";
-import { Link,useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
-import { Slider }from '@mui/material';
 
 function Form3(props) {
     const navigate = useNavigate();

@@ -1,7 +1,8 @@
 import React from "react";
+import { AppContext } from "../App";
 import './Form.css'; //Form.cssを読み込む
 import { Button } from "./button";
-import { Link,useNavigate } from "react-router-dom"; //変更点 11/10　useNavigateによって画面遷移を実装　htmlのaタグみたいな
+import { useNavigate } from "react-router-dom"; //変更点 11/10　useNavigateによって画面遷移を実装　htmlのaタグみたいな
 import prefecturesList from "./prefectures";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 
@@ -18,7 +19,8 @@ export const Form = (props) => {
     const handleClick = (event) => {
         //navigate関数を使って画面遷移
         navigate('/form2');
-    }
+    };
+
     
      
 
@@ -44,7 +46,7 @@ export const Form = (props) => {
                 {/*契約IDフォームの実装*/}
                 <div className="spacer">
                     <h4>ご契約ID(CAFまたはCOPから始まる番号)</h4>
-                    <select>
+                    <select value="caf-or-cop">
                         <option value="caf">CAF</option>
                         <option value="cop">COP</option>
                     </select>
@@ -53,11 +55,11 @@ export const Form = (props) => {
                 {/*電話番号フォームの実装*/}
                 <div className="spacer">
                     <h4>携帯電話番号</h4>
-                    <input type="text" />
+                    <input type="text" value="phone-number" />
                 </div>
                 <div className="spacer">
                     <h4>固定電話番号</h4>
-                    <input type="text" />
+                    <input type="text" value="home-phone-number" />
                 </div>
                 {/*住所フォームの実装*/}
                 <div>
@@ -67,7 +69,7 @@ export const Form = (props) => {
                 <div className="container2">
                     <div className="spacer">
                         <label>都道府県：</label>
-                        <select onChange={(e) => handleChange(e)}>
+                        <select onChange={(e) => handleChange(e)} value="prefecture">
                             {prefecturesList.prefectures.map((item) => (
                                 <option value={item.id}>{item.name}</option>
                             ))}
@@ -75,11 +77,11 @@ export const Form = (props) => {
                     </div>
                     <div className="spacer">
                         <label>市区町村：</label>
-                        <input type="text" />
+                        <input type="text" value="city"/>
                     </div>
                     <div className="spacer">
                         <label>建物、番地：</label>
-                        <input type="text" />
+                        <input type="text" value="house-number"/>
                     </div>
                 </div>
             </div>

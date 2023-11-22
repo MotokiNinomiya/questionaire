@@ -12,5 +12,10 @@
     font-weight: bold;
 }
 .slider{
-    margin-right: 200px;
+    width: 100%;
+}
+.MuiSlider-mark{
+    width:10px;
+    height:10px;
+    border-radius: 5px;
 }

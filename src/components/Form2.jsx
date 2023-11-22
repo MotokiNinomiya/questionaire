@@ -22,6 +22,56 @@ const initlalState = {
     timepoints: '',
     timereason: '',
   };
+
+  const marks = [
+    {
+        value: 0,
+        label: '0',
+    },
+    {
+        value: 1,
+        label: '1',
+    },
+    {
+        value: 2,
+        label: '2',
+    },
+    {   
+        value: 3,
+        label: '3',
+    },
+    {
+        value: 4,
+        label: '4',
+    },
+    {
+        value: 5,
+        label: '5',
+    },
+    {
+        value: 6,
+        label: '6',
+    },
+    {
+        value: 7,
+        label: '7',
+    },
+    {
+        value: 8,
+        label: '8',
+    },
+    {
+        value: 9,
+        label: '9',
+    },
+    {
+        value: 10,
+        label: '10',
+    },
+   ];
+  
+
+
   //各入力欄の状態変更(=値の入力）を行うリデューサー関数
   const editReducer = (state, action) => {
     switch (action.type) {
@@ -35,11 +85,23 @@ const initlalState = {
         return { ...state, mannerpoints: action.payload };
       case 'edit_mannerreason':
         return { ...state, mannerreason: action.payload };
+      case 'edit_easy_or_difficult':
+        return { ...state, easy_or_difficult: action.payload };
+      case 'edit_explainpoints':
+        return { ...state, explainpoints: action.payload };
+      case 'edit_explainreason':
+        return { ...state, explainreason: action.payload };
+      case 'edit_suitable_or_long_or_short':
+        return { ...state, suitable_or_long_or_short: action.payload };
+      case 'edit_timepoints':
+        return { ...state, timepoints: action.payload };
+      case 'edit_timereason':
+        return { ...state, timereason: action.payload };
       default:
         return state;
     }
   };
-
+// ↑dispatchでデータを収集し、stateで集める
 
 export const Form2 = (props) => {
     //ラジオボタンの初期値設定
@@ -59,28 +121,68 @@ export const Form2 = (props) => {
     };
 
     // スライダーの値を状態として管理します
-    const [sliderValue, setSliderValue] = useState(5);
+    //const [sliderValue, setSliderValue] = useState(5);
     // スライダーの値が変更されたときのハンドラー
     const handleSliderChange = (event,newValue) => {
-        setSliderValue(newValue);
+        //setSliderValue(newValue);
         dispatch({ type: 'edit_mannerpoints', payload: newValue });
     };
     //eventがないとエラーが出る
     //Objects are not valid as a React child (found: [object MouseEvent]). If you meant to render a collection of children, use an array instead.
     // スライダーの値を状態として管理します
-    const [sliderValue2, setSliderValue2] = useState(5);
+    //const [sliderValue2, setSliderValue2] = useState(5);
     // スライダーの値が変更されたときのハンドラー
     const handleSliderChange2 = (event,newValue) => {
-        setSliderValue2(newValue);
+        //setSliderValue2(newValue);
         dispatch({ type: 'edit_explainpoints', payload: newValue });
     };
 
     // スライダーの値を状態として管理します
-    const [sliderValue3, setSliderValue3] = useState(5);
+    //const [sliderValue3, setSliderValue3] = useState(5);
     // スライダーの値が変更されたときのハンドラー
     const handleSliderChange3 = (event,newValue) => {
-        setSliderValue3(newValue);
+        //setSliderValue3(newValue);
         dispatch({ type: 'edit_timepoints', payload: newValue });
+    };
+
+    //ラジオボタン1を押した時の処理
+    //const [selectedRadioBtnValue, setSelectedRadioBtnValue] = useState("");
+
+    const onRadioBtnChanged = (target) => {
+        //setSelectedRadioBtnValue(target.value);
+        dispatch({ type: 'edit_good_or_bad', payload: target.value });
+    };
+
+    //ラジオボタン2を押した時の処理
+    //const [selectedRadioBtnValue2, setSelectedRadioBtnValue2] = useState("");
+
+    const onRadioBtnChanged2 = (target) => {
+        //setSelectedRadioBtnValue2(target.value);
+        dispatch({ type: 'edit_ok_or_notok', payload: target.value });
+    };
+
+    //ラジオボタン3を押した時の処理
+    //const [selectedRadioBtnValue3, setSelectedRadioBtnValue3] = useState("");
+
+    const onRadioBtnChanged3 = (target) => {
+        //setSelectedRadioBtnValue3(target.value);
+        dispatch({ type: 'edit_enought_or_notenough', payload: target.value });
+    };
+
+    //ラジオボタン4を押した時の処理
+    //const [selectedRadioBtnValue4, setSelectedRadioBtnValue4] = useState("");
+
+    const onRadioBtnChanged4 = (target) => {
+        //setSelectedRadioBtnValue4(target.value);
+        dispatch({ type: 'edit_easy_or_difficult', payload: target.value });
+    };
+
+    //ラジオボタン5を押した時の処理
+    //const [selectedRadioBtnValue5, setSelectedRadioBtnValue5] = useState("");
+
+    const onRadioBtnChanged5 = (target) => {
+        //setSelectedRadioBtnValue5(target.value);
+        dispatch({ type: 'edit_suitable_or_long_or_short', payload: target.value });
     };
 
     return (
@@ -108,30 +210,21 @@ export const Form2 = (props) => {
                 <div>
                     <p>1-1 工事担当者のお客様対応について</p>
                 </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="verygood" /> 
-                        大満足
-                    </label>
-                    </div>
+                {/*divを繰り返しすることで縦に*/}
+                    {RADIO_VALUES.map((radioValue) => (
                     <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="good" /> 
-                        満足
-                    </label>
-                    </div>
-                    <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="bad" /> 
-                        不満
-                    </label>
-                    </div>
-                    <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="verybad" /> 
-                        大不満
-                    </label>
-                </div>
+                        <label key={radioValue}>
+                            <input
+                            type="radio"
+                            value={radioValue}
+                            name="sample"
+                            onChange={onRadioBtnChanged}
+                            />
+                            {radioValue}
+                        </label>
+                     </div>
+                    ))}
+
             </div>
 
             <div className="container">
@@ -176,18 +269,19 @@ export const Form2 = (props) => {
                 </div>
                 <div className="slider">
                     <Slider
-                        value={sliderValue}
+                        value={state.mannerpoints}
                         onChange={handleSliderChange}
                         min={0}
                         max={10}
                         step={1}
                         marks={true}
-                        valueLabelDisplay="auto"
+                        valueLabelDisplay="on"
                         defaultValue={5}
                         aria-label="Temperature"
+                        marks={marks}
                     />
                     {/* スライダーの値を表示*/}
-                    <p>{sliderValue}</p>
+                    <p>{state.mannerpoints}</p>
                 </div>
                 <div className="reason">
                     <p>2-4 上記を評価した理由を教えてください</p>
@@ -222,7 +316,7 @@ export const Form2 = (props) => {
                 </div>
                 <div className="slider">
                     <Slider
-                        value={sliderValue2}
+                        value={state.explainpoints}
                         onChange={handleSliderChange2}
                         min={0}
                         max={10}
@@ -231,9 +325,10 @@ export const Form2 = (props) => {
                         valueLabelDisplay="auto"
                         defaultValue={5}
                         aria-label="Temperature"
+                        marks={marks}
                     />
                     {/* スライダーの値を表示*/}
-                    <p>{sliderValue2}</p>
+                    <p>{state.explainpoints}</p>
                 </div>
                 <div className="reason">
                     <p>3-3 上記を評価した理由を教えてください</p>
@@ -275,18 +370,19 @@ export const Form2 = (props) => {
                 </div>
                 <div className="slider">
                     <Slider
-                        value={sliderValue3}
+                        value={state.timepoints}
                         onChange={handleSliderChange3}
                         min={0}
                         max={10}
                         step={1}
-                        marks={true}
                         valueLabelDisplay="auto"
                         defaultValue={5}
                         aria-label="Temperature"
+                        marks={marks}
+                        sx={{fontSize: 20}} 
                     />
                     {/* スライダーの値を表示*/}
-                    <p>{sliderValue3}</p>
+                    <p>{state.timepoints}</p>
                 </div>
                 <div className="reason">
                     <p>4-3 上記を評価した理由を教えてください</p>

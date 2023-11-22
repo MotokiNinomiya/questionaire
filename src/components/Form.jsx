@@ -53,11 +53,11 @@ export const Form = (props) => {
 
     const navigate = useNavigate();
     const handleClick = ({target}) => {
-        //navigate関数を使って画面遷移
-        navigate('/form2');
         //ここでデータを送信する処理を書く
         //登録ボタンを押した時に、データを送信する処理を書く
-        //postData(state);
+        //postData(state); ページ遷移するたびにデータ
+        //navigate関数を使って画面遷移
+        navigate('/form2');
     };
 
     const handleChangeCaforCop = ({target}) => {
@@ -119,7 +119,7 @@ export const Form = (props) => {
                         <option value="caf">CAF</option>
                         <option value="cop">COP</option>
                     </select>
-                    <input type="text" />
+                    <input type="text" onChange={handleChangeId}/>
                 </div>
                 {/*電話番号フォームの実装*/}
                 <div className="spacer">

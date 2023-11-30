@@ -5,7 +5,8 @@ import { Button } from "./button";
 import { useNavigate } from "react-router-dom"; //変更点 11/10　useNavigateによって画面遷移を実装　htmlのaタグみたいな
 import prefecturesList from "./prefectures";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
-//import { postData, updateData, deleteData } from './httpMethods';
+import { postData, updateData, deleteData } from './httpmethod';
+
 //入力欄の初期値に相当
 const initialState = {
     caf_cop: '',
@@ -55,7 +56,7 @@ export const Form = (props) => {
     const handleClick = ({target}) => {
         //ここでデータを送信する処理を書く
         //登録ボタンを押した時に、データを送信する処理を書く
-        //postData(state); ページ遷移するたびにデータ
+        postData(state); 
         //navigate関数を使って画面遷移
         navigate('/form2');
     };

@@ -7,7 +7,8 @@ import { Button } from "./button";
 import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { Slider }from '@mui/material';
-//import { postData, updateData, deleteData } from './httpMethods';
+import { postData, updateData, deleteData } from './httpmethod';
+
 //入力欄の初期値に相当
 const initialState = {
     good_or_bad: '',
@@ -116,6 +117,8 @@ export const Form2 = (props) => {
 
     const navigate = useNavigate();
     const handleClick = ({target}) => {
+        //ここでデータを送信する処理を書く
+        postData(state); 
         //navigate関数を使って画面遷移
         navigate('/form3');
     };

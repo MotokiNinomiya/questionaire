@@ -2,8 +2,8 @@
 //AWSの認証情報を自動的に通信データに添付してくれる
 import { API } from 'aws-amplify';
 
-const apiName = 'FeelingAPI'; //API GatewayでのAPI名
-const path = '/feeling'; // WebAPIのURL
+const apiName = 'questionaireAPI'; //API GatewayでのAPI名
+const path = '/questionaire'; // WebAPIのURL
 const option = {
   // ヘッダーなどのオプション設定
   headers: {},

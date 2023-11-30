@@ -2,8 +2,7 @@ import React from "react";
 import './App.css';
 import Form from "./components/Form";　//Formコンポーネント(Form.jsx)をインポート
 import Form2 from "./components/Form2";　//Formコンポーネント(Form.jsx)をインポート
-import Form3 from "./components/Form3";　//Formコンポーネント(Form.jsx)をインポート
-import prefecturesList from "./components/prefectures"; //prefecturesコンポーネント(prefectures.jsx)をインポート 
+import Form3 from "./components/Form3";　//Formコンポーネント(Form.jsx)をインポート 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -12,7 +11,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // providerを書くことで、valueを渡すことができる
 
 function App() {
-  const datas = JSON.stringify(prefecturesList);
   return (
 
     <BrowserRouter>

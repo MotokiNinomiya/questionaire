@@ -9,7 +9,7 @@ import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { Slider }from '@mui/material';
 //import { postData, updateData, deleteData } from './httpMethods';
 //入力欄の初期値に相当
-const initlalState = {
+const initialState = {
     good_or_bad: '',
     ok_or_not: '',
     enough_or_notenough: '',
@@ -106,13 +106,13 @@ const initlalState = {
 export const Form2 = (props) => {
     //ラジオボタンの初期値設定
     const RADIO_VALUES = ["大満足", "満足", "不満", "大不満"];
-    // const RADIO_VALUES2 = ["よかった", "よくなかった"];
-    // const RADIO_VALUES3 = ["よかった", "よくなかった"];
-    // const RADIO_VALUES4 = ["分かりやすかった", "分かりにくかった"];
-    // const RADIO_VALUES5 = ["適切だった", "長かった", "短かった"];
+    const RADIO_VALUES2 = ["よかった", "よくなかった"];
+    const RADIO_VALUES3 = ["よかった", "よくなかった"];
+    const RADIO_VALUES4 = ["分かりやすかった", "分かりにくかった"];
+    const RADIO_VALUES5 = ["適切だった", "長かった", "短かった"];
 
 
-    const [state, dispatch] = useReducer(editReducer, initlalState);
+    const [state, dispatch] = useReducer(editReducer, initialState);
 
     const navigate = useNavigate();
     const handleClick = ({target}) => {
@@ -222,7 +222,7 @@ export const Form2 = (props) => {
                             />
                             {radioValue}
                         </label>
-                     </div>
+                    </div>
                     ))}
 
             </div>
@@ -235,32 +235,36 @@ export const Form2 = (props) => {
                 <div>
                     <p>2-1 挨拶・言葉遣いについて応対マナーはいかがでしたでしょうか？</p>
                 </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="OK" /> 
-                        よかった
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="notOK" /> 
-                        よくなかった
-                    </label>
-                </div>
+                    {RADIO_VALUES2.map((radioValue) => (
+                        <div className="radio">
+                            <label key={radioValue}>
+                                <input
+                                type="radio"
+                                value={radioValue}
+                                name="sample"
+                                onChange={onRadioBtnChanged2}
+                                />
+                                {radioValue}
+                            </label>
+                        </div>
+                        ))}
                 <div>
                     <p>2-2 身だしなみ(服装・髪型など)はいかがでしたでしょうか？</p>
                 </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="enough" /> 
-                        よかった
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="notenough" /> 
-                        よくなかった
-                    </label>
+                <div>
+                    {RADIO_VALUES3.map((radioValue) => (
+                            <div className="radio">
+                                <label key={radioValue}>
+                                    <input
+                                    type="radio"
+                                    value={radioValue}
+                                    name="sample"
+                                    onChange={onRadioBtnChanged3}
+                                    />
+                                    {radioValue}
+                                </label>
+                            </div>
+                            ))}
                 </div>
                 {/*スライダーの実装*/}
                 {/* react-sliderコンポーネントを使用 */}
@@ -274,7 +278,6 @@ export const Form2 = (props) => {
                         min={0}
                         max={10}
                         step={1}
-                        marks={true}
                         valueLabelDisplay="on"
                         defaultValue={5}
                         aria-label="Temperature"
@@ -299,17 +302,20 @@ export const Form2 = (props) => {
                 <div>
                     <p>3-1 工事作業前、作業後の説明について分かりやすかったでしょうか？</p>
                 </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="easy" /> 
-                        分かりやすかった
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="difficult" /> 
-                        分かりにくかった
-                    </label>
+                <div>
+                    {RADIO_VALUES4.map((radioValue) => (
+                                <div className="radio">
+                                    <label key={radioValue}>
+                                        <input
+                                        type="radio"
+                                        value={radioValue}
+                                        name="sample"
+                                        onChange={onRadioBtnChanged4}
+                                        />
+                                        {radioValue}
+                                    </label>
+                                </div>
+                                ))}
                 </div>
                 <div>
                     <p>3-2 工事担当者の説明について0-10点満点で評価をお願いいたします。</p>
@@ -321,7 +327,6 @@ export const Form2 = (props) => {
                         min={0}
                         max={10}
                         step={1}
-                        marks={true}
                         valueLabelDisplay="auto"
                         defaultValue={5}
                         aria-label="Temperature"
@@ -347,23 +352,20 @@ export const Form2 = (props) => {
                 <div>
                     <p>4-1 実際の作業時間について事前の説明と比較していかがだったでしょうか？</p>
                 </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="suitable" /> 
-                        適切だった
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="long" /> 
-                        長かった
-                    </label>
-                </div>
-                <div className="radio">
-                    <label>
-                        <input type="radio" name="radio" value="short" /> 
-                        短かった
-                    </label>
+                <div>
+                    {RADIO_VALUES5.map((radioValue) => (
+                                <div className="radio">
+                                    <label key={radioValue}>
+                                        <input
+                                        type="radio"
+                                        value={radioValue}
+                                        name="sample"
+                                        onChange={onRadioBtnChanged5}
+                                        />
+                                        {radioValue}
+                                    </label>
+                                </div>
+                                ))}
                 </div>
                 <div>
                     <p>4-2 工事担当者の作業時間について0-10点満点で評価をお願いいたします。</p>

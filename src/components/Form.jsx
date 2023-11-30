@@ -7,7 +7,7 @@ import prefecturesList from "./prefectures";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 //import { postData, updateData, deleteData } from './httpMethods';
 //入力欄の初期値に相当
-const initlalState = {
+const initialState = {
     caf_cop: '',
     id: '',
     phonenumber: '',
@@ -48,7 +48,7 @@ export const Form = (props) => {
 
     //変更点　11/10
     
-    const [state, dispatch] = useReducer(editReducer, initlalState);
+    const [state, dispatch] = useReducer(editReducer, initialState);
 
 
     const navigate = useNavigate();

@@ -8,22 +8,10 @@ import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { Slider }from '@mui/material';
 import { postData, updateData, deleteData } from './httpmethod';
+import editReducer  from './editReducer';
+import initialState  from './initialState';
 
-//入力欄の初期値に相当
-const initialState = {
-    good_or_bad: '',
-    ok_or_not: '',
-    enough_or_notenough: '',
-    mannerpoints: '',
-    mannerreason: '',
-    easy_or_difficult: '',
-    explainpoints: '',
-    explainreason: '',
-    suitable_or_long_or_short: '',
-    timepoints: '',
-    timereason: '',
-  };
-
+  //sliderの目盛り用
   const marks = [
     {
         value: 0,
@@ -70,39 +58,6 @@ const initialState = {
         label: '10',
     },
    ];
-  
-
-
-  //各入力欄の状態変更(=値の入力）を行うリデューサー関数
-  const editReducer = (state, action) => {
-    switch (action.type) {
-      case 'edit_good_or_bad':
-        return { ...state, good_or_bad: action.payload };
-      case 'edit_ok_or_notok':
-        return { ...state, ok_or_notok: action.payload };
-      case 'edit_enought_or_notenough':
-        return { ...state, enought_or_notenough: action.payload };
-      case 'edit_mannerpoints':
-        return { ...state, mannerpoints: action.payload };
-      case 'edit_mannerreason':
-        return { ...state, mannerreason: action.payload };
-      case 'edit_easy_or_difficult':
-        return { ...state, easy_or_difficult: action.payload };
-      case 'edit_explainpoints':
-        return { ...state, explainpoints: action.payload };
-      case 'edit_explainreason':
-        return { ...state, explainreason: action.payload };
-      case 'edit_suitable_or_long_or_short':
-        return { ...state, suitable_or_long_or_short: action.payload };
-      case 'edit_timepoints':
-        return { ...state, timepoints: action.payload };
-      case 'edit_timereason':
-        return { ...state, timereason: action.payload };
-      default:
-        return state;
-    }
-  };
-// ↑dispatchでデータを収集し、stateで集める
 
 export const Form2 = (props) => {
     //ラジオボタンの初期値設定
@@ -187,6 +142,18 @@ export const Form2 = (props) => {
         //setSelectedRadioBtnValue5(target.value);
         dispatch({ type: 'edit_suitable_or_long_or_short', payload: target.value });
     };
+
+    const handleChangemannerreason = ({target}) => {
+        dispatch({ type: 'edit_mannerreason', payload: target.value });
+    };
+
+    const handleChangeexplainreason = ({target}) => {
+        dispatch({ type: 'edit_explainreason', payload: target.value });
+    };
+
+    const handleChangetimereason = ({target}) => {
+        dispatch({ type: 'edit_timereason', payload: target.value });
+    }
 
     return (
         <div>        
@@ -294,6 +261,7 @@ export const Form2 = (props) => {
                     <input 
                     type="text" 
                     style={{width: "460px", height: "100px"}}
+                    onChange={handleChangemannerreason}
                     />
                 </div>
             </div>
@@ -343,6 +311,7 @@ export const Form2 = (props) => {
                     <input 
                     type="text" 
                     style={{width: "460px", height: "100px"}}
+                    onChange={handleChangeexplainreason}
                     />
                 </div>
             </div>
@@ -394,6 +363,7 @@ export const Form2 = (props) => {
                     <input 
                     type="text" 
                     style={{width: "460px", height: "100px"}}
+                    onChange={handleChangetimereason}
                     />
                 </div>
             </div>

@@ -1,0 +1,50 @@
+{
+  "api": {
+    "motokiquestionaireAPI": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "motokiquestionaireFunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "motokiquestionaireFunction": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_motokiquestionaireFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "motokiquestionaireFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_motokiquestionaireFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "motokiquestionaireFunction"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "motokiquestionaireDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

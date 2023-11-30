@@ -2,7 +2,7 @@
 //AWSの認証情報を自動的に通信データに添付してくれる
 import { API } from 'aws-amplify';
 
-const apiName = 'questionaireAPI'; //API GatewayでのAPI名
+const apiName = 'motokiquestionaireAPI'; //API GatewayでのAPI名
 const path = '/questionaire'; // WebAPIのURL
 const option = {
   // ヘッダーなどのオプション設定

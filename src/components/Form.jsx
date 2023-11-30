@@ -6,39 +6,8 @@ import { useNavigate } from "react-router-dom"; //変更点 11/10　useNavigate�
 import prefecturesList from "./prefectures";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { postData, updateData, deleteData } from './httpmethod';
-
-//入力欄の初期値に相当
-const initialState = {
-    caf_cop: '',
-    id: '',
-    phonenumber: '',
-    homephonenumber: '',
-    prefecture: '',
-    city: '',
-    address: '',
-};
-
-//各入力欄の状態変更(=値の入力）を行うリデューサー関数
-const editReducer = (state, action) => {
-    switch (action.type) {
-    case 'edit_caf-or-cop':
-        return { ...state, caf_cop: action.payload };
-    case 'edit_id':
-        return { ...state, id: action.payload };
-    case 'edit_phonenumber':
-        return { ...state, phonenumber: action.payload };
-    case 'edit_homephonenumber':
-        return { ...state, homephonenumber: action.payload };
-    case 'edit_prefecture':
-        return { ...state, prefecture: action.payload };
-    case 'edit_city':
-        return { ...state, city: action.payload };
-    case 'edit_address':
-        return { ...state, address: action.payload };
-    default:
-        return state;
-    }
-};
+import editReducer from './editReducer';
+import initialState  from './initialState';
 
 export const Form = (props) => {
     // const data = JSON.parse(props.data); //これが問題

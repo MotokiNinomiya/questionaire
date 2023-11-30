@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/questionaire": {
+      "name": "/questionaire",
+      "lambdaFunction": "motokiquestionaireFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

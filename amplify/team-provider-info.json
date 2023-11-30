@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-questionaire-dev-190105-authRole",
+      "UnauthRoleArn": "arn:aws:iam::694884380931:role/amplify-questionaire-dev-190105-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::694884380931:role/amplify-questionaire-dev-190105-authRole",
+      "Region": "ap-northeast-1",
+      "DeploymentBucketName": "amplify-questionaire-dev-190105-deployment",
+      "UnauthRoleName": "amplify-questionaire-dev-190105-unauthRole",
+      "StackName": "amplify-questionaire-dev-190105",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:694884380931:stack/amplify-questionaire-dev-190105/60b56c50-8f67-11ee-b9ef-061252dc206d",
+      "AmplifyAppId": "d3jcc4e58mpok6"
+    },
+    "categories": {
+      "function": {
+        "motokiquestionaireFunction": {
+          "deploymentBucketName": "amplify-questionaire-dev-190105-deployment",
+          "s3Key": "amplify-builds/motokiquestionaireFunction-2f74314d32644e4d5749-build.zip"
+        }
+      },
+      "storage": {
+        "motokiquestionaireDB": {}
+      },
+      "api": {
+        "motokiquestionaireAPI": {}
+      }
+    }
+  }
+}

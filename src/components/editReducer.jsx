@@ -20,7 +20,7 @@ const editReducer = (state, action) => {
     case 'edit_ok_or_notok':
         return { ...state, ok_or_not: action.payload };
     case 'edit_enough_or_notenough':
-        return { ...state, enought_or_notenough: action.payload };
+        return { ...state, enough_or_notenough: action.payload };
     case 'edit_mannerpoints':
         return { ...state, mannerpoints: action.payload };
     case 'edit_mannerreason':

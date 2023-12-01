@@ -8,9 +8,9 @@ import editReducer from './components/editReducer';
 import initialState  from './components/initialState';
 import { useReducer } from 'react';
 
-// usecontextをインポート
-// usecontextの各項目を書く 電話番号など
-// providerを書くことで、valueを渡すことができる
+
+// providerを書くことで、valueをformに渡す
+
 export const QuestionaireAnswer = React.createContext();
 
 function App() {

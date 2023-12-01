@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Form.css'; //Form.cssを読み込む
 import './Form2.css'; //Form2.cssを読み込む
+import Form from './Form';
 import { Button } from "./button";
 import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート

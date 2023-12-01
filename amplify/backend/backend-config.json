@@ -1,6 +1,6 @@
 {
   "api": {
-    "motokiquestionaireAPI": {
+    "QuestionaireNinomiyaAPI": {
       "dependsOn": [
         {
           "attributes": [
@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "motokiquestionaireFunction"
+          "resourceName": "ninomiyaQFunction"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -16,7 +16,7 @@
     }
   },
   "function": {
-    "motokiquestionaireFunction": {
+    "ninomiyaQFunction": {
       "build": true,
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
@@ -24,25 +24,25 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_motokiquestionaireFunction_deploymentBucketName": {
+    "AMPLIFY_function_ninomiyaQFunction_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "motokiquestionaireFunction"
+          "resourceName": "ninomiyaQFunction"
         }
       ]
     },
-    "AMPLIFY_function_motokiquestionaireFunction_s3Key": {
+    "AMPLIFY_function_ninomiyaQFunction_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "motokiquestionaireFunction"
+          "resourceName": "ninomiyaQFunction"
         }
       ]
     }
   },
   "storage": {
-    "motokiquestionaireDB": {
+    "QuestionaireNinomiyaDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

@@ -1,13 +1,13 @@
 import React from "react";
-import { useReducer } from 'react';
+import { useContext } from 'react';
 import './Form.css'; //Form.cssを読み込む
 import { Button } from "./button";
 import { useNavigate } from "react-router-dom"; //変更点 11/10　useNavigateによって画面遷移を実装　htmlのaタグみたいな
 import prefecturesList from "./prefectures";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { postData, updateData, deleteData } from './httpmethod';
-import editReducer from './editReducer';
-import initialState  from './initialState';
+import { QuestionaireAnswer } from "../App";
+import caf_cop_list from "./caf_cop_list";
 
 export const Form = (props) => {
     // const data = JSON.parse(props.data); //これが問題
@@ -17,21 +17,20 @@ export const Form = (props) => {
     // });
 
     //変更点　11/10
-    
-    const [state, dispatch] = useReducer(editReducer, initialState);
-
+    const [state, dispatch] = useContext(QuestionaireAnswer);
 
     const navigate = useNavigate();
     const handleClick = ({target}) => {
         //ここでデータを送信する処理を書く
         //登録ボタンを押した時に、データを送信する処理を書く
-        postData(state); 
+        //postData(state); 
         //navigate関数を使って画面遷移
         navigate('/form2');
     };
 
     const handleChangeCaforCop = ({target}) => {
         //cafかcopを入力された場合の処理
+        console.log(target.value);
         dispatch({ type: 'edit_caf-or-cop', payload: target.value })
     };
 
@@ -52,6 +51,7 @@ export const Form = (props) => {
 
     const handleChangePrecfecture = ({target}) => {
         //都道府県を入力された場合の処理
+        console.log(target.value);
         dispatch({ type: 'edit_prefecture', payload: target.value })
     };
 
@@ -62,6 +62,7 @@ export const Form = (props) => {
 
     const handleChangeAddress = ({target}) => {
         //cafかcopを入力された場合の処理
+        console.log(target.value);
         dispatch({ type: 'edit_address', payload: target.value })
     };
 
@@ -85,20 +86,21 @@ export const Form = (props) => {
                 {/*契約IDフォームの実装*/}
                 <div className="spacer">
                     <h4>ご契約ID(CAFまたはCOPから始まる番号)</h4>
-                    <select onChange={handleChangeCaforCop}>
-                        <option value="caf">CAF</option>
-                        <option value="cop">COP</option>
-                    </select>
-                    <input type="text" onChange={handleChangeId}/>
+                        <select onChange={handleChangeCaforCop}>
+                            {caf_cop_list.caf_cop.map((item) => (
+                                <option value={item.name}>{item.name}</option>
+                            ))}
+                        </select>
+                    <input type="text" value={state.id} onChange={handleChangeId}/>
                 </div>
                 {/*電話番号フォームの実装*/}
                 <div className="spacer">
                     <h4>携帯電話番号</h4>
-                    <input type="text" onChange={handleChangePhonenumber}/>
+                    <input type="text" value={state.phonenumber} onChange={handleChangePhonenumber}/>
                 </div>
                 <div className="spacer">
                     <h4>固定電話番号</h4>
-                    <input type="text" onChange={handleChangeHomephonenumber} />
+                    <input type="text" value={state.homephonenumber} onChange={handleChangeHomephonenumber} />
                 </div>
                 {/*住所フォームの実装*/}
                 <div>
@@ -110,17 +112,18 @@ export const Form = (props) => {
                         <label>都道府県：</label>
                         <select onChange={handleChangePrecfecture}>
                             {prefecturesList.prefectures.map((item) => (
-                                <option value={item.id}>{item.name}</option>
+                                <option value={item.name}>{item.name}</option>
                             ))}
                         </select>
+
                     </div>
                     <div className="spacer">
                         <label>市区町村：</label>
-                        <input type="text" onChange={handleChangeCity}/>
+                        <input type="text" value={state.city} onChange={handleChangeCity}/>
                     </div>
                     <div className="spacer">
                         <label>建物、番地：</label>
-                        <input type="text" onChange={handleChangeAddress}/>
+                        <input type="text" value={state.address} onChange={handleChangeAddress}/>
                     </div>
                 </div>
             </div>

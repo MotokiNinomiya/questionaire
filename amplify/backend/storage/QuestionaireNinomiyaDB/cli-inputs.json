@@ -1,6 +1,6 @@
 {
-  "resourceName": "motokiquestionaireDB",
-  "tableName": "motokiquestionaireDB",
+  "resourceName": "QuestionaireNinomiyaDB",
+  "tableName": "QuestionaireNinomiyaDB",
   "partitionKey": {
     "fieldName": "ID",
     "fieldType": "string"

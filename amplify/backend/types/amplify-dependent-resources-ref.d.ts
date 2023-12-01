@@ -1,13 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
   "api": {
-    "motokiquestionaireAPI": {
+    "QuestionaireNinomiyaAPI": {
       "ApiId": "string",
       "ApiName": "string",
       "RootUrl": "string"
     }
   },
   "function": {
-    "motokiquestionaireFunction": {
+    "ninomiyaQFunction": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -16,7 +16,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
-    "motokiquestionaireDB": {
+    "QuestionaireNinomiyaDB": {
       "Arn": "string",
       "Name": "string",
       "PartitionKeyName": "string",

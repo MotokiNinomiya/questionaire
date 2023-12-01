@@ -18,8 +18,8 @@ const editReducer = (state, action) => {
     case 'edit_good_or_bad':
         return { ...state, good_or_bad: action.payload };
     case 'edit_ok_or_notok':
-        return { ...state, ok_or_notok: action.payload };
-    case 'edit_enought_or_notenough':
+        return { ...state, ok_or_not: action.payload };
+    case 'edit_enough_or_notenough':
         return { ...state, enought_or_notenough: action.payload };
     case 'edit_mannerpoints':
         return { ...state, mannerpoints: action.payload };

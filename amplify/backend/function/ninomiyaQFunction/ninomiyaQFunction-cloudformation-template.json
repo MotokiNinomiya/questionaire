@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "motokiquestionaireFunction",
+            "ninomiyaQFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "motokiquestionaireFunction",
+                  "ninomiyaQFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "questionaireLambdaRole4ecd15d9",
+            "questionaireLambdaRole00f9a4c0",
             {
               "Fn::Join": [
                 "",
                 [
-                  "questionaireLambdaRole4ecd15d9",
+                  "questionaireLambdaRole00f9a4c0",
                   "-",
                   {
                     "Ref": "env"

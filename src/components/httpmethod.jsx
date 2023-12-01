@@ -1,10 +1,11 @@
 //Amplify専用のHTTP通信関数を利用する
 //AWSの認証情報を自動的に通信データに添付してくれる
+//{API} from '@aws-amplify/api'だとエラー
+//package JsonのAWS－Amplifyのバージョンが6だとエラー　5に今は下げている
+import { API } from 'aws-amplify';
 
-import { get,post,put,del } from '@aws-amplify/api';
-
-const apiName = 'motokiquestionaireAPI'; //API GatewayでのAPI名
-const path = '/questionaire'; // WebAPIのURL
+const apiName = 'QuestionaireNinomiyaAPI'; //API GatewayでのAPI名
+const path = '/Questionaire'; // WebAPIのURL
 const option = {
   // ヘッダーなどのオプション設定
   headers: {},
@@ -14,7 +15,7 @@ const option = {
 export const getData = async (setFunction) => {
   try {
     //GETでHTTP通信を開始
-    const data = await get(apiName, path, option);
+    const data = await API.get(apiName, path, option);
     //結果の保存
     setFunction(data);
   } catch (error) {
@@ -30,7 +31,7 @@ export const postData = async (newData) => {
       newData
     }; //newDataと書いてもいい　option.bodyはそういう名前
     //POSTでHTTP通信を開始
-    await post(apiName, path, option);
+    await API.post(apiName, path, option);
   } catch (error) {
     console.error(error);
   }
@@ -40,7 +41,7 @@ export const postData = async (newData) => {
 export const getDataById = async (setFunction, id) => {
   try {
     //GETでHTTP通信を開始
-    const data = await get(apiName, `${path}/${id}`, option);
+    const data = await API.get(apiName, `${path}/${id}`, option);
     //結果の保存
     setFunction(data);
   } catch (error) {
@@ -57,7 +58,7 @@ export const updateData = async (newData) => {
       newData
     };
     //PUTでHTTP通信を開始
-    await put(apiName, `${path}/${newData.id}`, option);
+    await API.put(apiName, `${path}/${newData.id}`, option);
   } catch (error) {
     console.error(error);
   }
@@ -67,7 +68,7 @@ export const updateData = async (newData) => {
 export const deleteData = async (id) => {
   try {
     //DELETEでHTTP通信を開始
-    await del(apiName, `${path}/${id}`, option);
+    await API.del(apiName, `${path}/${id}`, option);
   } catch (error) {
     console.error(error);
   }

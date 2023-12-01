@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { useReducer } from 'react';
+import { useContext } from 'react';
 import './Form.css'; //Form.cssを読み込む
 import './Form2.css'; //Form2.cssを読み込む
 import { Button } from "./button";
@@ -8,8 +7,7 @@ import { Link,useNavigate} from "react-router-dom";
 import pic from "../ntteastlogo.jpg"; //NTT東日本のロゴをインポート
 import { Slider }from '@mui/material';
 import { postData, updateData, deleteData } from './httpmethod';
-import editReducer  from './editReducer';
-import initialState  from './initialState';
+import { QuestionaireAnswer } from "../App";
 
   //sliderの目盛り用
   const marks = [
@@ -60,6 +58,9 @@ import initialState  from './initialState';
    ];
 
 export const Form2 = (props) => {
+
+    const [state, dispatch] = useContext(QuestionaireAnswer);
+
     //ラジオボタンの初期値設定
     const RADIO_VALUES = ["大満足", "満足", "不満", "大不満"];
     const RADIO_VALUES2 = ["よかった", "よくなかった"];
@@ -68,12 +69,11 @@ export const Form2 = (props) => {
     const RADIO_VALUES5 = ["適切だった", "長かった", "短かった"];
 
 
-    const [state, dispatch] = useReducer(editReducer, initialState);
-
     const navigate = useNavigate();
     const handleClick = ({target}) => {
-        //ここでデータを送信する処理を書く
+        //ここでForm1-2で入力したデータを送信する
         postData(state); 
+        console.log(state);
         //navigate関数を使って画面遷移
         navigate('/form3');
     };
@@ -106,40 +106,45 @@ export const Form2 = (props) => {
     //ラジオボタン1を押した時の処理
     //const [selectedRadioBtnValue, setSelectedRadioBtnValue] = useState("");
 
-    const onRadioBtnChanged = (target) => {
+    const onRadioBtnChanged = ({target}) => {
         //setSelectedRadioBtnValue(target.value);
+        console.log(target.value);
         dispatch({ type: 'edit_good_or_bad', payload: target.value });
     };
 
     //ラジオボタン2を押した時の処理
     //const [selectedRadioBtnValue2, setSelectedRadioBtnValue2] = useState("");
 
-    const onRadioBtnChanged2 = (target) => {
+    const onRadioBtnChanged2 = ({target}) => {
         //setSelectedRadioBtnValue2(target.value);
+        console.log(target.value);
         dispatch({ type: 'edit_ok_or_notok', payload: target.value });
     };
 
     //ラジオボタン3を押した時の処理
     //const [selectedRadioBtnValue3, setSelectedRadioBtnValue3] = useState("");
 
-    const onRadioBtnChanged3 = (target) => {
+    const onRadioBtnChanged3 = ({target}) => {
         //setSelectedRadioBtnValue3(target.value);
-        dispatch({ type: 'edit_enought_or_notenough', payload: target.value });
+        console.log(target.value);
+        dispatch({ type: 'edit_enough_or_notenough', payload: target.value });
     };
 
     //ラジオボタン4を押した時の処理
     //const [selectedRadioBtnValue4, setSelectedRadioBtnValue4] = useState("");
 
-    const onRadioBtnChanged4 = (target) => {
+    const onRadioBtnChanged4 = ({target}) => {
         //setSelectedRadioBtnValue4(target.value);
+        console.log(target.value);
         dispatch({ type: 'edit_easy_or_difficult', payload: target.value });
     };
 
     //ラジオボタン5を押した時の処理
     //const [selectedRadioBtnValue5, setSelectedRadioBtnValue5] = useState("");
 
-    const onRadioBtnChanged5 = (target) => {
+    const onRadioBtnChanged5 = ({target}) => {
         //setSelectedRadioBtnValue5(target.value);
+        console.log(target.value);
         dispatch({ type: 'edit_suitable_or_long_or_short', payload: target.value });
     };
 
@@ -183,11 +188,11 @@ export const Form2 = (props) => {
                 {/*divを繰り返しすることで縦に*/}
                     {RADIO_VALUES.map((radioValue) => (
                     <div className="radio">
-                        <label key={radioValue}>
+                        <label>
                             <input
                             type="radio"
                             value={radioValue}
-                            name="sample"
+                            name="sample1"
                             onChange={onRadioBtnChanged}
                             />
                             {radioValue}
@@ -211,7 +216,7 @@ export const Form2 = (props) => {
                                 <input
                                 type="radio"
                                 value={radioValue}
-                                name="sample"
+                                name="sample2"
                                 onChange={onRadioBtnChanged2}
                                 />
                                 {radioValue}
@@ -228,7 +233,7 @@ export const Form2 = (props) => {
                                     <input
                                     type="radio"
                                     value={radioValue}
-                                    name="sample"
+                                    name="sample3"
                                     onChange={onRadioBtnChanged3}
                                     />
                                     {radioValue}
@@ -260,6 +265,7 @@ export const Form2 = (props) => {
                     <p>2-4 上記を評価した理由を教えてください</p>
                     <input 
                     type="text" 
+                    value={state.mannerreason}
                     style={{width: "460px", height: "100px"}}
                     onChange={handleChangemannerreason}
                     />
@@ -280,7 +286,7 @@ export const Form2 = (props) => {
                                         <input
                                         type="radio"
                                         value={radioValue}
-                                        name="sample"
+                                        name="sample4"
                                         onChange={onRadioBtnChanged4}
                                         />
                                         {radioValue}
@@ -310,6 +316,7 @@ export const Form2 = (props) => {
                     <p>3-3 上記を評価した理由を教えてください</p>
                     <input 
                     type="text" 
+                    value={state.explainreason}
                     style={{width: "460px", height: "100px"}}
                     onChange={handleChangeexplainreason}
                     />
@@ -331,7 +338,7 @@ export const Form2 = (props) => {
                                         <input
                                         type="radio"
                                         value={radioValue}
-                                        name="sample"
+                                        name="sample5"
                                         onChange={onRadioBtnChanged5}
                                         />
                                         {radioValue}
@@ -362,6 +369,7 @@ export const Form2 = (props) => {
                     <p>4-3 上記を評価した理由を教えてください</p>
                     <input 
                     type="text" 
+                    value={state.timereason}
                     style={{width: "460px", height: "100px"}}
                     onChange={handleChangetimereason}
                     />
@@ -376,6 +384,3 @@ export const Form2 = (props) => {
 };
 
 export default Form2;
-
-
-

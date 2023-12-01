@@ -100,7 +100,7 @@ def do_post(event):
   random_id = uuid.uuid4()
   table.put_item(
     Item = {
-      "id": str(random_id),
+      "ID": str(random_id),
       "contractid": post_body['caf_or_cop']+str(post_body['id']),
       "phonenumber": post_body['phonenumber'],
       "homephonenumber": post_body['homephonenumber'],
@@ -118,6 +118,7 @@ def do_post(event):
       "timepoints":post_body['timepoints'],
       "timereason": post_body['timereason'],
     })
+  
   return {
     "statusCode": 201,
     'headers': headers_options,

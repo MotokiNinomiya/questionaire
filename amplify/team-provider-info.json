@@ -1,21 +1,21 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-questionaire-dev-153636-authRole",
-      "UnauthRoleArn": "arn:aws:iam::694884380931:role/amplify-questionaire-dev-153636-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::694884380931:role/amplify-questionaire-dev-153636-authRole",
+      "AuthRoleName": "amplify-questionaire-dev-14238-authRole",
+      "UnauthRoleArn": "arn:aws:iam::694884380931:role/amplify-questionaire-dev-14238-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::694884380931:role/amplify-questionaire-dev-14238-authRole",
       "Region": "ap-northeast-1",
-      "DeploymentBucketName": "amplify-questionaire-dev-153636-deployment",
-      "UnauthRoleName": "amplify-questionaire-dev-153636-unauthRole",
-      "StackName": "amplify-questionaire-dev-153636",
-      "StackId": "arn:aws:cloudformation:ap-northeast-1:694884380931:stack/amplify-questionaire-dev-153636/fa1543a0-9013-11ee-b7cc-0637349f277b",
-      "AmplifyAppId": "d2fn5zusdxuewf"
+      "DeploymentBucketName": "amplify-questionaire-dev-14238-deployment",
+      "UnauthRoleName": "amplify-questionaire-dev-14238-unauthRole",
+      "StackName": "amplify-questionaire-dev-14238",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:694884380931:stack/amplify-questionaire-dev-14238/201ca4b0-9c32-11ee-a93c-0a96df7c734b",
+      "AmplifyAppId": "d3abmq3w7seyl8"
     },
     "categories": {
       "function": {
         "ninomiyaQFunction": {
-          "deploymentBucketName": "amplify-questionaire-dev-153636-deployment",
-          "s3Key": "amplify-builds/ninomiyaQFunction-556d7139715968444650-build.zip"
+          "deploymentBucketName": "amplify-questionaire-dev-14238-deployment",
+          "s3Key": "amplify-builds/ninomiyaQFunction-2f6a6b704264734c7130-build.zip"
         }
       },
       "storage": {

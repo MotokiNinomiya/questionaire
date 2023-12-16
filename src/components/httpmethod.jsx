@@ -1,4 +1,5 @@
 import { API } from 'aws-amplify';
+import { v4 as uuidv4 } from 'uuid'; // Import UUID module
 
 const apiName = 'QuestionaireNinomiyaAPI';
 const path = '/Questionaire';
@@ -9,7 +10,7 @@ const option = {
 export const postData = async (newData) => {
   try {
     const datetime = Math.floor(Date.now() / 1000); //現在のUNIXTIME（秒）
-    const ID = crypto.randomUUID(); //uuid v4
+    const ID = uuidv4(); //uuid v4
     const newItem = {
         datetime : datetime,
         ID: ID,

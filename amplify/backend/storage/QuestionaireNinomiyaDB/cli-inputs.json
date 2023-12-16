@@ -2,8 +2,8 @@
   "resourceName": "QuestionaireNinomiyaDB",
   "tableName": "QuestionaireNinomiyaDB",
   "partitionKey": {
-    "fieldName": "ID",
-    "fieldType": "string"
+    "fieldName": "datetime",
+    "fieldType": "number"
   },
   "gsi": [],
   "triggerFunctions": []

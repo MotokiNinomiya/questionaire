@@ -15,7 +15,7 @@
       "function": {
         "ninomiyaQFunction": {
           "deploymentBucketName": "amplify-questionaire-dev-153636-deployment",
-          "s3Key": "amplify-builds/ninomiyaQFunction-4a635552585439794f41-build.zip"
+          "s3Key": "amplify-builds/ninomiyaQFunction-556d7139715968444650-build.zip"
         }
       },
       "storage": {

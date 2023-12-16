@@ -1,74 +1,39 @@
-//Amplify専用のHTTP通信関数を利用する
-//AWSの認証情報を自動的に通信データに添付してくれる
-//{API} from '@aws-amplify/api'だとエラー
-//package JsonのAWS－Amplifyのバージョンが6だとエラー　5に今は下げている
 import { API } from 'aws-amplify';
 
-const apiName = 'QuestionaireNinomiyaAPI'; //API GatewayでのAPI名
-const path = '/Questionaire'; // WebAPIのURL
+const apiName = 'QuestionaireNinomiyaAPI';
+const path = '/Questionaire';
 const option = {
-  // ヘッダーなどのオプション設定
-  headers: {},
+  headers: {}
 };
 
-//WebAPIより全データ取得する関数
-export const getData = async (setFunction) => {
-  try {
-    //GETでHTTP通信を開始
-    const data = await API.get(apiName, path, option);
-    //結果の保存
-    setFunction(data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-//WebAPIに新たなデータを登録する関数
 export const postData = async (newData) => {
   try {
-    // オプションに送信データを設定
-    option.body = {
-      newData
-    }; //newDataと書いてもいい　option.bodyはそういう名前
-    //POSTでHTTP通信を開始
-    await API.post(apiName, path, option);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-//WebAPIよりIDに該当するデータを取得する関数
-export const getDataById = async (setFunction, id) => {
-  try {
-    //GETでHTTP通信を開始
-    const data = await API.get(apiName, `${path}/${id}`, option);
-    //結果の保存
-    setFunction(data);
-  } catch (error) {
-    //通信を失敗した際の処理
-    console.error(error);
-  }
-};
-
-//WebAPIよりIDに該当するデータを更新する関数
-export const updateData = async (newData) => {
-  try {
-    // オプションに送信データを設定
-    option.body = {
-      newData
+    const datetime = Math.floor(Date.now() / 1000); //現在のUNIXTIME（秒）
+    const ID = crypto.randomUUID(); //uuid v4
+    const newItem = {
+        datetime : datetime,
+        ID: ID,
+        address: newData.address,
+        caf_cop: newData.caf_cop,
+        city: newData.city,
+        easy_or_difficult: newData.easy_or_difficult,
+        enough_or_notenough: newData.enough_or_notenough,
+        explainpoints: newData.explainpoints,
+        explainreason: newData.explainreason,
+        good_or_bad: newData.good_or_bad,
+        homephonenumber: newData.homephonenumber,
+        id: newData.id,
+        mannerpoints: newData.mannerpoints,
+        mannerreason: newData.mannerreason,
+        ok_or_not: newData.ok_or_not,
+        phonenumber: newData.phonenumber,
+        prefecture: newData.prefecture,
+        suitable_or_long_or_short: newData.suitable_or_long_or_short,
+        timepoints: newData.timepoints,
+        timereason: newData.timereason
     };
-    //PUTでHTTP通信を開始
-    await API.put(apiName, `${path}/${newData.id}`, option);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-//WebAPIよりIDに該当するデータを削除する関数
-export const deleteData = async (id) => {
-  try {
-    //DELETEでHTTP通信を開始
-    await API.del(apiName, `${path}/${id}`, option);
+    option.body = newItem;
+    await API.post(apiName, path, option);
   } catch (error) {
     console.error(error);
   }
